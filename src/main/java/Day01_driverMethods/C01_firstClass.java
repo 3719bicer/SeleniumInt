@@ -1,6 +1,8 @@
 package Day01_driverMethods;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class C01_firstClass {
@@ -11,5 +13,8 @@ public class C01_firstClass {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://www.amazon.com");
+
+        WebElement signElement= driver.findElement(By.id("userName"));
+        signElement.click();
     }
 }
