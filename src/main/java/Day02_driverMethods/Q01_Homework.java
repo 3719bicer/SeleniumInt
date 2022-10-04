@@ -1,6 +1,8 @@
 package Day02_driverMethods;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -25,7 +27,7 @@ public class Q01_Homework {
 
         System.setProperty("webdriver.chrome.driver","src/resources/chromedriver.exe");
         WebDriver driver=new ChromeDriver();
-        driver.get("https://www.facebook.com");
+        driver.navigate().to("https://www.facebook.com");
 
         String expectedTitle = "facebook";
         String actualTitle=driver.getTitle();
@@ -39,13 +41,13 @@ public class Q01_Homework {
                     expectedTitle + " kelimesini içermektedir.");
         }else {
             System.out.println("https://www.facebook.com sayfasının basligi :" +
-                    expectedTitle + " kelimesini içermemektedir.");
+                    driver.getTitle() + " kelimesini içermemektedir.");
         }
 
         //3-URL test
         if(actualUrl.contains(expectedUrl)){
             System.out.println("https://www.facebook.com URL'si : " +
-                    expectedUrl + " kelimesini içermektedir.");
+                    driver.getCurrentUrl() + " kelimesini içermektedir.");
         }else {
             System.out.println("https://www.facebook.com URL'si : " +
                     expectedUrl + " kelimesini içermemektedir.");
