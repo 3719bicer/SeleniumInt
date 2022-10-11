@@ -21,7 +21,7 @@ public class C01_findElement {
         driver.get("https://www.amazon.com");
 
         //Bir web sitesinde herhangi bir web elemnti kullanabilmek için
-        //o web elemnti kodlarımıza tanıtmak gerekir.
+        //o web elementi kodlarımıza tanıtmak gerekir.
 
 
         WebElement amazonAramaKutusu = driver.findElement(By.id("twotabsearchtextbox"));

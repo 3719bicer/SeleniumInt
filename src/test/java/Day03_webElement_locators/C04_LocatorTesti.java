@@ -16,19 +16,25 @@ public class C04_LocatorTesti {
         WebDriver driver= new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
+
         //  a.web sayfasına gidin. https://www.amazon.com/
         driver.get("https://www.amazon.com");
+
         //  b. Search(ara) “city bike”
         WebElement aramaKutusu= driver.findElement(By.id("twotabsearchtextbox"));
         aramaKutusu.sendKeys("city bike");
         aramaKutusu.submit();
+
         //  c. Amazon'da görüntülenen ilgili sonuçların sayısını yazdırın
         List<WebElement> sonucWebelementListe= driver.findElements(By.className("sg-col-inner"));
+
         // bu listenin 1.elementi bulunan sonuc sayisi
         System.out.println(sonucWebelementListe.get(0).getText());
+
         //  d. Sonra karşınıza çıkan ilk sonucun resmine tıklayın.
         driver.findElement(By.className("s-image")).click();
         /*
+
         Eger bir locate ile birden fazla element bulunuyorsa
         selenium ilk elementi kullanir
          */
