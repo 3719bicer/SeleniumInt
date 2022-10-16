@@ -1,5 +1,10 @@
 package Practice;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Duration;
+
 public class Q2 {
 
     public static void main(String[] args) {
@@ -21,6 +26,48 @@ public class Q2 {
          12- Daha sonra web sayfamiza tekrar donelim ve oldugumuz sayfayi kapatalim
          13- En son adim olarak butun sayfalarimizi kapatmis olalim
         */
+
+        System.setProperty("webdriver.chrome.driver","src/resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://www.otto.de");
+
+        String actOttoTitle = driver.getTitle();
+        System.out.println("actOttoTitle = " + actOttoTitle);
+
+        String actOttoUrl = driver.getCurrentUrl();
+        System.out.println("actOttoUrl = " + actOttoUrl);
+
+        if (actOttoTitle.contains("OTTO"))
+            System.out.println("Otto Title Test Passed");
+        else
+            System.out.println("Otto Title Test Failed");            ;
+
+        if (actOttoUrl.contains("otto"))
+            System.out.println("Otto URL Test Passed");
+        else
+            System.out.println("Otto URL Test Failed");
+
+        driver.navigate().to("https://wisequarter.com/");
+
+        boolean isTrue = driver.getTitle().contains("Quarter");
+
+        if (isTrue)
+            System.out.println("WQ Title Test Passed");
+        else
+            System.out.println("WQ Title Test Failed");
+
+        String wqUrl = driver.getCurrentUrl();
+
+        System.out.println(wqUrl.contains("quarter")? "WQ Url Test Passed" : "WQ Url Test Failed");
+
+        driver.navigate().back();
+        driver.navigate().refresh();
+        driver.navigate().forward();
+
+        driver.quit();
 
     }
 }

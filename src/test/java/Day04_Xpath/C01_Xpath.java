@@ -20,7 +20,7 @@ public class C01_Xpath {
         Xpath ve cssSelector sadece bir attribute'e veya tag'e bagımlı olmadan
         her web elementi locate etmenize yarar.
 
-        Her element'de
+        Her HTML element'de
         1- tag
         2- attreibute(s)
         3- attribute value

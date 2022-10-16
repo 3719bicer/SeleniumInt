@@ -1,5 +1,7 @@
+package Practice;
+
 public class Deneme {
-    String  isim="John Doe";
+    /*String  isim="John Doe";
     int yas=40;
 
     public Deneme(){ //John Doe,40-Seher,40
@@ -21,5 +23,18 @@ public class Deneme {
         Deneme obj2=new Deneme("Fatih",55);
     }
 
+
+*/
+    public static void main(String[] args) {
+
+        String a="";
+
+        a+=2;
+        a+='c';
+        a+=false;
+        if (a=="2cfalse") System.out.println("==");
+        if (a.equals("2cfalse")) System.out.println("equals");
+
+    }
 
 }

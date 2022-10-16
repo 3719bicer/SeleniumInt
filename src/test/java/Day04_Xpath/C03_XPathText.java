@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class C03_XPathText {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         /*
           bir web element link olmasa da text icerebilir
@@ -17,7 +17,7 @@ public class C03_XPathText {
           //tagName[text()='yazi']
           tagName onemli degilse * yazilabilir
          */
-
+        /*
         System.setProperty("webdriver.chrome.driver","src/resources/chromedriver.exe");
         WebDriver driver= new ChromeDriver();
         driver.manage().window().maximize();
@@ -49,8 +49,49 @@ public class C03_XPathText {
         }else {
             System.out.println("Add Remove yazisi gorunmuyor, test FAILED");
         }
-        driver.close();
+        driver.close();*/
+
+        System.setProperty("webdriver.chrome.driver","src/resources/chromedriver.exe");
+        WebDriver driver= new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
 
+        //1- https://the-internet.herokuapp.com/add_remove_elements/ adresine gidin.
+        driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
+
+        //2- Add Element butonuna basin
+        WebElement addElementButonu;
+        driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
+        //driver.findElement(By.xpath("//*[text()='Delete']"));
+        //addElementButonu.click();
+        Thread.sleep(5000);
+
+        //3- Delete butonu’nun gorunur oldugunu test edin
+        WebElement deleteButonu = driver.findElement(By.xpath("//button[@onclick='deleteElement()']"));
+        //WebElement deleteButonu=driver.findElement(By.xpath("//*[text()='Delete']"));
+
+        if(deleteButonu.isDisplayed()){
+            System.out.println("Delete Butonu görünüyor :" + "Test PASSED");
+        }else {
+            System.out.println("Delete Butonu görünmüyor :" + "Test FAILED");
+        }
+        Thread.sleep(5000);
+
+        //4- Delete tusuna basin
+        deleteButonu.click();
+
+        //5- “Add/Remove Elements” yazisinin gorunur oldugunu test edin
+        //WebElement addRemoveYazısı =driver.findElement(By.xpath("//*[text()='Add/Remove Elements']"));
+
+        //cssSelector ile
+        WebElement addRemoveYazısı =driver.findElement(By.xpath(".class"));
+
+        if(addRemoveYazısı.isDisplayed()){
+            System.out.println("addRemoveYazısı görünüyor :" + "Test PASSED");
+        }else {
+            System.out.println("addRemoveYazısı görünmüyor :" + "Test FAILED");
+        }
+        //driver.close();
     }
 }
